@@ -1,0 +1,50 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo '🏗️👷 Estilizando, testando e construindo seu projeto antes de se comprometer'
+
+# Check Prettier standards
+npm run check-format ||
+(
+    echo '🤢🤮🤢🤮 É F**KING RAW - Seu estilo parece nojento.. 🤢🤮🤢🤮
+            Falha na verificação do Prettier. Execute o npm run lint, adicione alterações e tente confirmar novamente.';
+    false;
+)
+
+# Check ESLint Standards
+npm run check-lint ||
+(
+        echo '😤🏀👋😤 Tire esse fracote daqui! 😤🏀👋😤
+                  Falha na verificação do ESLint. Faça as alterações necessárias listadas acima, adicione alterações e tente confirmar novamente.'
+        false;
+)
+
+# Check tsconfig standards
+npm run check-types ||
+(
+    echo '🤡😂❌🤡 Verificação de types com falha. 🤡😂❌🤡
+            Você está seriamente tentando escrever isso? Faça as alterações necessárias acima.'
+    false;
+)
+
+npm run test ||
+(
+    echo '🤢🤮🤢🤮 É F**KING RAW - Seu teste parece nojento.. 🤢🤮🤢🤮
+    '
+    false;
+)
+
+echo '🤔🤔🤔🤔... Tudo bem... O código parece bom para mim...  Vou tentando gerar a build agora. 🤔🤔🤔🤔'
+
+npm run build ||
+(
+    echo '❌👷🔨❌ Tentando gerar um build ❌👷🔨❌
+            Falha na compilação: veja os erros acima para ver o motivo.
+    '
+    false;
+)
+
+# If everything passes... Now we can commit
+echo '✅✅✅✅ Você venceu desta vez... Estou cometendo isso agora. ✅✅✅✅
+
+'

@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  academy-database:
+    image: postgres:15-alpine
+    container_name: database
+    expose:
+      - 5432
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=api
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  academy-api:
+    image: node:18-alpine
+    container_name: api
+    working_dir: /home/api
+    env_file: 
+      - .env
+    ports:
+    - ${PORT}:${PORT}
+    expose:
+      - ${PORT}
+    entrypoint: ./.docker/entrypoint-api.sh
+    volumes:
+      - .:/home/api
+      - node_modules:/home/api/node_modules/
+    depends_on:
+      - academy-database
+
+volumes:
+  db_data:
+  node_modules:
+    driver: local
