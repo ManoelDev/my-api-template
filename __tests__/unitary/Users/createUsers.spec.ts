@@ -1,5 +1,5 @@
-import { InMemoryUsersRepository } from '@/modules/user/repository/inMemory/InMemoryUsersRepository';
-import { createUsersUseCase } from '@/modules/user/useCase/createUsersUseCase';
+import { InMemoryUsersRepository } from '@/modules/users/repository/inMemory/InMemoryUsersRepository';
+import { createUsersUseCase } from '@/modules/users/useCase/createUsersUseCase';
 import { compare } from 'bcryptjs';
 import { expect, describe, it, beforeEach } from 'vitest';
 
@@ -17,7 +17,7 @@ describe('Create User (UNIT)', () => {
     password: '123456',
   };
 
-  it('Should be able create a new account', async () => {
+  it('Should be able create a new users', async () => {
     const { user } = await sut.execute(BodyObject);
     expect(user.id).toEqual(expect.any(String));
   });

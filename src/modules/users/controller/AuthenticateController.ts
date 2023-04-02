@@ -14,12 +14,12 @@ export async function AuthenticateController(request: FastifyRequest, reply: Fas
   const authenticateUseCase = makeAuthenticateUseCase();
 
   try {
-    const { account } = await authenticateUseCase.execute({ email, password });
+    const { users } = await authenticateUseCase.execute({ email, password });
     const token = await reply.jwtSign(
       {},
       {
         sign: {
-          sub: account.id,
+          sub: users.id,
         },
       }
     );
@@ -28,7 +28,7 @@ export async function AuthenticateController(request: FastifyRequest, reply: Fas
       {},
       {
         sign: {
-          sub: account.id,
+          sub: users.id,
           expiresIn: '7d',
         },
       }

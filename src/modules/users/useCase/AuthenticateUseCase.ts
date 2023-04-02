@@ -8,19 +8,19 @@ interface RequestDTO {
 }
 
 interface ResponseDTO {
-  account: Users;
+  users: Users;
 }
 
-export class RefreshAuthenticateUseCase {
-  constructor(private accountRepository: IUsersRepository) {}
+export class AuthenticateUseCase {
+  constructor(private usersRepository: IUsersRepository) {}
 
   async execute({ email, password }: RequestDTO): Promise<ResponseDTO> {
-    const account = await this.accountRepository.findByEmail(email);
-    if (!account) throw new Error('invalid credentials');
+    const users = await this.usersRepository.findByEmail(email);
+    if (!users) throw new Error('invalid credentials');
 
-    const isValidPassword = await compare(password, account.password);
+    const isValidPassword = await compare(password, users.password);
     if (!isValidPassword) throw new Error('invalid credentials');
 
-    return { account };
+    return { users };
   }
 }

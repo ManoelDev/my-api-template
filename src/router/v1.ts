@@ -1,4 +1,4 @@
-import { UsersRouter } from '@/modules/user/routes';
+import { UsersRouter } from '@/modules/users/routes';
 import { FastifyInstance } from 'fastify';
 
 export async function AppRoutesV1(app: FastifyInstance) {
