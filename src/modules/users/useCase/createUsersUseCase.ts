@@ -3,6 +3,7 @@ import { hash } from 'bcryptjs';
 import { IUsersRepository } from '../repository/IUsersRepository';
 
 interface RequestDTO {
+  name: string;
   email: string;
   password: string;
 }
@@ -14,13 +15,17 @@ interface ResponseDTO {
 export class createUsersUseCase {
   constructor(private accountRepository: IUsersRepository) {}
 
-  async execute({ email, password }: RequestDTO): Promise<ResponseDTO> {
-    const passwordHash = await hash(password, 6);
+  async execute(data: RequestDTO): Promise<ResponseDTO> {
+    const passwordHash = await hash(data.password, 6);
 
-    const findAccount = await this.accountRepository.findByEmail(email);
+    const findAccount = await this.accountRepository.findByEmail(data.email);
     if (findAccount) throw new Error('Email already exists.');
 
-    const user = await this.accountRepository.create({ email, password: passwordHash });
+    const user = await this.accountRepository.create({
+      email: data.email,
+      password: passwordHash,
+      profile: { create: { name: data.name } },
+    });
 
     return { user };
   }

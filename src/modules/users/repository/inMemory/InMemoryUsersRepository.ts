@@ -12,7 +12,14 @@ export class InMemoryUsersRepository implements IUsersRepository {
   }
 
   async create(data: Prisma.UsersCreateInput): Promise<Users> {
-    const account = { ...data, id: randomUUID(), createdAt: new Date(), updatedAt: new Date() };
+    const account = {
+      id: randomUUID(),
+      email: data.email,
+      password: data.password,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      profileId: randomUUID(),
+    };
     this.users.push(account);
     return account;
   }

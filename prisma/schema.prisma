@@ -8,11 +8,29 @@ datasource db {
 }
 
 model Users {
-  id        String   @id @default(uuid())
-  email     String   @unique
+  id        String  @id @default(uuid())
+  email     String  @unique
   password  String
+  profileId String?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  profile Profiles? @relation(fields: [profileId], references: [id])
+
   @@map("users")
+}
+
+model Profiles {
+  id     String  @id @default(uuid())
+  name   String?
+  avatar String?
+  bio    String?
+  phone  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Users     Users[]
+
+  @@map("profiles")
 }

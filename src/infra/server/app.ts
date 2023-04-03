@@ -22,7 +22,7 @@ app.register(fastifyCookie);
 
 app.setErrorHandler((error, _, reply) => {
   if (error instanceof ZodError) {
-    reply.status(400).send({ statusCode: 400, error: 'Validation error', message: error.issues[0].message });
+    reply.status(400).send({ statusCode: 400, ...error.issues[0] });
   }
   if (env.NODE_ENV !== 'development') {
     console.error(error);

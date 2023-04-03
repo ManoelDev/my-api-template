@@ -13,6 +13,7 @@ describe('Create User (UNIT)', () => {
   });
 
   const BodyObject = {
+    name: 'John Doe',
     email: 'jhondoe@example.com',
     password: '123456',
   };
