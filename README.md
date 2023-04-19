@@ -16,4 +16,4 @@ npx prisma migrate dev
 npm run dev
 ```
 
-view all comandas in package.json
+view all commands in package.json
