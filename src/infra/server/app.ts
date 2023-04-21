@@ -3,10 +3,17 @@ import { env } from '../env';
 import fastify from 'fastify';
 import { ZodError } from 'zod';
 
+import cors from '@fastify/cors';
+
 import fastifyJwt from '@fastify/jwt';
 import fastifyCookie from '@fastify/cookie';
 
 export const app = fastify();
+
+app.register(cors, {
+  origin: env.CORS_ORIGIN,
+  hook: 'preHandler',
+});
 
 app.register(fastifyJwt, {
   secret: env.JWT_SECRET,

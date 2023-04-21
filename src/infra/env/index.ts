@@ -5,6 +5,7 @@ const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
   PORT: z.coerce.number().default(3333),
   JWT_SECRET: z.string().default('secret_development'),
+  CORS_ORIGIN: z.string().default('http://localhost:3000'),
 });
 
 const _env = envSchema.safeParse(process.env);
