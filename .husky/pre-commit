@@ -45,6 +45,6 @@ npm run build ||
 )
 
 # If everything passes... Now we can commit
-echo '✅✅✅✅ Você venceu desta vez... Estou cometendo isso agora. ✅✅✅✅
+echo '✅✅✅✅ Você venceu desta vez... Estou comitando seu codigo agora. ✅✅✅✅
 
 '
