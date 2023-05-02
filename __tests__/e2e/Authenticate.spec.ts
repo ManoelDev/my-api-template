@@ -18,7 +18,7 @@ describe('Authenticate (e2e)', () => {
   it('should be able to authenticate', async () => {
     await request(app.server).post('/v1/account').send(BodyObject);
 
-    const response = await request(app.server).post('/v1/account/session').send(BodyObject);
+    const response = await request(app.server).post('/v1/account/auth').send(BodyObject);
 
     expect(response.status).toEqual(200);
     expect(response.body).toEqual({

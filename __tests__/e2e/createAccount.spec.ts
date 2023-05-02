@@ -29,7 +29,7 @@ describe('createUser (e2e)', () => {
     expect(response.body).toEqual(
       expect.objectContaining({
         error: 'Conflict',
-        message: 'Email already exists.',
+        message: 'Email já cadastrado.',
       })
     );
   });
