@@ -5,7 +5,7 @@ import { randomUUID } from 'crypto';
 export class AccountRepositoryInMemory implements IAccountRepository {
   public account: Account[] = [];
 
-  create(data: Prisma.AccountCreateInput): Promise<Partial<Account>> {
+  create(data: Prisma.AccountCreateInput): Promise<Account> {
     const account = {
       id: randomUUID(),
       email: data.email,

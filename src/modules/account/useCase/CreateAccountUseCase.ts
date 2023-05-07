@@ -4,7 +4,9 @@ import { IAccountRepository } from '../repository/IAccountRepository';
 import { hash } from 'bcryptjs';
 
 export class CreateAccountUseCase {
-  constructor(private accountRepository: IAccountRepository) {}
+  constructor(private accountRepository: IAccountRepository) {
+    // inject.
+  }
 
   async execute(data: CreateAccountType): Promise<{ account: Account }> {
     const passwordHash = await hash(data.password, 6);
@@ -15,8 +17,9 @@ export class CreateAccountUseCase {
     const account = await this.accountRepository.create({
       email: data.email,
       password: passwordHash,
-      profile: { create: { name: data.name } },
     });
+
+    if (!account) throw new Error('Não foi possível criar a conta.');
 
     return { account };
   }
