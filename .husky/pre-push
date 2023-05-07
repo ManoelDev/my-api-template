@@ -3,7 +3,7 @@
 
 echo '🏗️👷 Antes de enviar seu codigo vou esta testando seu projeto antes de se comprometer'
 
-npm run test ||
+npm run test:e2e ||
 (
     echo '🤢🤮🤢🤮 É F**KING RAW - Seu teste e2e parece nojento.. 🤢🤮🤢🤮
     '
