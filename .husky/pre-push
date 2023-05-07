@@ -18,3 +18,8 @@ echo '🤔🤔🤔🤔... Tudo bem... O teste passou...  Vou tentando gerar a bu
 echo '✅✅✅✅ Você venceu mais uma vez... Estou enviando seu codigo agora para o git. ✅✅✅✅
 
 '
+
+rm -r build  || (
+    echo 'Erro ao remover build'
+    false;
+)
