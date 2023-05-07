@@ -27,8 +27,7 @@ npm run check-types ||
     false;
 )
 
-npm run test ||
-(
+npm run test || (
     echo '🤢🤮🤢🤮 É F**KING RAW - Seu teste parece nojento.. 🤢🤮🤢🤮
     '
     false;
