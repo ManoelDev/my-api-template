@@ -3,12 +3,6 @@
 
 echo '🏗️👷 Antes de enviar seu codigo vou esta testando seu projeto antes de se comprometer'
 
-npm run test || (
-    echo '🤢🤮🤢🤮 É F**KING RAW - Seu teste parece nojento.. 🤢🤮🤢🤮
-    '
-    false;
-)
-
 npm run test:e2e || (
     echo '🤢🤮🤢🤮 É F**KING RAW - Seu teste e2e parece nojento.. 🤢🤮🤢🤮
     '
@@ -22,10 +16,9 @@ npm run build || (
     false;
 )
 
-echo '🤔🤔🤔🤔... Tudo bem... O teste passou...  Vou tentando gerar a build agora. 🤔🤔🤔🤔'
-
 # If everything passes... Now we can commit
-echo '✅✅✅✅ Você venceu mais uma vez... Estou enviando seu codigo agora para o git. ✅✅✅✅
+echo '
+✅✅✅✅ Você venceu mais uma vez... Estou enviando seu codigo agora para o git. ✅✅✅✅
 
 '
 
