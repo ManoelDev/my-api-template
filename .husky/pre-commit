@@ -48,3 +48,8 @@ npm run build ||
 echo '✅✅✅✅ Você venceu desta vez... Estou comitando seu codigo agora. ✅✅✅✅
 
 '
+
+rm -r build  || (
+    echo 'erro ao remover build'
+    false;
+)
