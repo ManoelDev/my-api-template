@@ -2,17 +2,17 @@ import 'dotenv/config';
 import { z } from 'zod';
 
 const envSchema = z.object({
-  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  PORT: z.coerce.number().default(3333),
-  JWT_SECRET: z.string().default('secret_development'),
-  CORS_ORIGIN: z.array(z.string()).default(['http://localhost:3000']),
+	NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+	PORT: z.coerce.number().default(3333),
+	JWT_SECRET: z.string().default('secret_development'),
+	CORS_ORIGIN: z.array(z.string()).default(['http://localhost:3000']),
 });
 
 const _env = envSchema.safeParse(process.env);
 
 if (!_env.success) {
-  console.error('Invalid environment variables.', _env.error.format());
-  throw new Error('Invalid environment variables.');
+	console.error('Invalid environment variables.', _env.error.format());
+	throw new Error('Invalid environment variables.');
 }
 
 export const env = _env.data;
