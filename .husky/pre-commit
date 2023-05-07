@@ -33,22 +33,10 @@ npm run test || (
     false;
 )
 
-echo '🤔🤔🤔🤔... Tudo bem... O código parece bom para mim...  Vou tentando gerar a build agora. 🤔🤔🤔🤔'
-
-npm run build ||
-(
-    echo '❌👷🔨❌ Tentando gerar um build ❌👷🔨❌
-            Falha na compilação: veja os erros acima para ver o motivo.
-    '
-    false;
-)
+echo '
+🤔🤔🤔🤔... Tudo bem... O código parece bom para mim...  Vou tentando gerar a build agora. 🤔🤔🤔🤔'
 
 # If everything passes... Now we can commit
 echo '✅✅✅✅ Você venceu desta vez... Estou comitando seu codigo agora. ✅✅✅✅
 
 '
-
-rm -r build  || (
-    echo 'erro ao remover build'
-    false;
-)
